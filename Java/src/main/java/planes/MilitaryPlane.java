@@ -1,12 +1,19 @@
-package Planes;
+package planes;
 
 import models.MilitaryType;
 
 import java.util.Objects;
-
+/**
+ * The MilitaryPlane class represents a military aircraft and extends the
+ * Plane class. It encapsulates the characteristics specific to military planes,
+ * including the type of military aircraft.
+ * Date: Jan 04, 2019
+ *
+ * @author Vitali Shulha
+ */
 public class MilitaryPlane extends Plane{
 
-    private MilitaryType type;
+    private final MilitaryType type;
 
     public MilitaryPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType type) {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
@@ -20,16 +27,15 @@ public class MilitaryPlane extends Plane{
     @Override
     public String toString() {
         return super.toString().replace("}",
-                ", type=" + type +
-                '}');
+                String.format(", type=%s}", type));
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MilitaryPlane)) return false;
-        if (!super.equals(o)) return false;
-        MilitaryPlane that = (MilitaryPlane) o;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        MilitaryPlane that = (MilitaryPlane) object;
         return type == that.type;
     }
 
